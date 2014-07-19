@@ -12,8 +12,14 @@
   <h1>SUP?</h1>
   <div ng-controller="tttController">
     <div class="main-container">
+
       <div class="column" ng-repeat="row in board">
-        <div class="box" ng-repeat="box in row" ng-class="{blue: clicked()}"> {{box.name}} count:{{count}}
+
+        <div class="{{ box.x }}_{{ box.y}}_{{box.mark}}" ng-click="clicked(box.x,box.y,box.mark)" ng-repeat="box in row" ng-class"{box:true, selected:box.active}" >
+          
+          <div class="mark"> {{box.x}}, {{box.y}}</div>
+
+
         </div>
       </div> 
     </div>

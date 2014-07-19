@@ -2,30 +2,50 @@ var tttApp = angular.module('TicTacToe', []);
 
 tttApp.controller('tttController', function ($scope) {
 
-$scope.sizeBox = 6;
+$scope.sizeBox = 4;
 
 
   $scope.newBoard = function(size) {
     $scope.board = [];
+      
       for (i=0; i<size; ++i ) {
-        var colset = []; 
+        var colset = [];
+
         for (j=0; j<size; ++j ) {
-          colset.push({name: 'c' + i + 'r' +j});
+          colset.push({
+            x:(j + 1),
+            y:(i + 1)
+
+          });
         }
-      $scope.board.push(colset)
+      $scope.board.push(colset);
       } 
   };
+  
+ 
+
+  $scope.clicked = function (x,y,mark){
+    alert(x + ", " + y);
+   
+    if(clicked) {
+      $scope.playerMove = function(counter) {
+      counter = 1
+        if((counter % 2) === 0) {
+          playerMove = "Player1";
+        }
+        else {
+          playerMove = "Player2";
+        };
+      counter++;
+      console.log('counter');
+    }
+   };
+  
+  
+  }
+
 
   $scope.newBoard($scope.sizeBox);
-
-   $scope.clicked = function(t) {
-    if(t = true) {
-      t = false;
-    }
-    else {
-      t = true;
-    }
-   }
 
 //   $scope.collection = ["Item 1", "Item 2"];
 

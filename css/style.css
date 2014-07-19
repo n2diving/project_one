@@ -37,7 +37,7 @@ body {
   padding: 1px;
   float:left;
 }
-.box, .box-small {
+.box {
   padding: 3px;
   border: 2px solid #D3D3D3;
   background-color: #FFF;
@@ -45,9 +45,17 @@ body {
   height:60px;
 }
 
-.blue {
+.mark {
+  padding: 3px;
+  border: 2px solid #D3D3D3;
+  background-color: #FFF;
+  width: 60px;
+  height:60px;
+}
+
+/*.blue {
   padding: 90%;
   border: 2px solid #D3D3D3;
   width: 20%;
   background-color:blue;
-}
+}*/
