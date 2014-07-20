@@ -1,6 +1,6 @@
-var tttApp = angular.module('TicTacToe', []);
+var gameApp = angular.module('TicTacToe', []);
 
-tttApp.controller('tttController', function ($scope) {
+gameApp.controller('gameController', function ($scope) {
 
 $scope.sizeBox = 4;
 
@@ -22,27 +22,44 @@ $scope.sizeBox = 4;
       } 
   };
   
+  $scope.pc = 0;
+  $scope.player1Turn = true;
+  var player1moves = [];
+  var player2moves = [];
+
+  $scope.cluster = function(pos,player) {
+    if(player1Turn) {
+      player1moves.push(pos);
+      $scope.board[pos] = "p1";
+    }
+    else {
+      player2moves.push(pos);
+      $scope.board[pos] = "p2";
+    }
+  }
+
+  // console.log(player1moves)
  
 
-  $scope.clicked = function (x,y,mark){
-    alert(x + ", " + y);
+  // $scope.clicked = function (x,y,mark){
+  //   alert(x + ", " + y);
    
-    if(clicked) {
-      $scope.playerMove = function(counter) {
-      counter = 1
-        if((counter % 2) === 0) {
-          playerMove = "Player1";
-        }
-        else {
-          playerMove = "Player2";
-        };
-      counter++;
-      console.log('counter');
-    }
-   };
+  //   if(clicked) {
+  //     $scope.playerMove = function(counter) {
+  //     counter = 1
+  //       if((counter % 2) === 0) {
+  //         playerMove = "Player1";
+  //       }
+  //       else {
+  //         playerMove = "Player2";
+  //       };
+  //     counter++;
+  //     console.log('counter');
+  //   }
+  //  };
   
   
-  }
+  // }
 
 
   $scope.newBoard($scope.sizeBox);
