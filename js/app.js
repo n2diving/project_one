@@ -23,7 +23,6 @@ $scope.sizeBox = 4;
   };
   
   $scope.pc = 0;
-  $scope.player1Turn = true;
   var player1moves = [];
   var player2moves = [];
 
@@ -31,13 +30,18 @@ $scope.sizeBox = 4;
     if($scope.player1Turn) {
       player1moves.push(pos);
       $scope.board[pos] = "p1";
+      console.log('Player 1');
+      console.log(pos);
       console.log(player1moves);
     }
     else {
       player2moves.push(pos);
       $scope.board[pos] = "p2";
+      console.log('Player 2');
+      console.log(pos);
       console.log(player2moves);
     }
+    $scope.player1Turn = !$scope.player1Turn;
   }
 
   // console.log(player1moves)
