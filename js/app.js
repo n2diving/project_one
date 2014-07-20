@@ -28,13 +28,15 @@ $scope.sizeBox = 4;
   var player2moves = [];
 
   $scope.cluster = function(pos,player) {
-    if(player1Turn) {
+    if($scope.player1Turn) {
       player1moves.push(pos);
       $scope.board[pos] = "p1";
+      console.log(player1moves);
     }
     else {
       player2moves.push(pos);
       $scope.board[pos] = "p2";
+      console.log(player2moves);
     }
   }
 
