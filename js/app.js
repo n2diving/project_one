@@ -2,10 +2,10 @@ var gameApp = angular.module('TicTacToe', []);
 
 gameApp.controller('gameController', function ($scope) {
 
-$scope.sizeBox = 4;
-$scope.player1Turn = true;
-var x = $scope.x;
-var y = $scope.y;
+$scope.sizeBox = 3;
+// $scope.player1Turn = true;
+// var x = $scope.x;
+// var y = $scope.y;
 
   $scope.newBoard = function(size) {
     $scope.board = [];
@@ -15,9 +15,10 @@ var y = $scope.y;
 
         for (j=0; j<size; ++j ) {
           colset.push({
-            x:(j + 1),
-            y:(i + 1),
-            active:true
+            // x:(j + 1),
+            // y:(i + 1),
+            // active:true
+            status: 'active'
           });
         }
       $scope.board.push(colset);
@@ -32,7 +33,7 @@ var y = $scope.y;
   $scope.cluster = function(pos,player) {
     if($scope.player1Turn) {
       player1moves.push(pos);
-      $scope.board[pos].active = false;
+      pos.status = 'p1';
       console.log('Player 1');
       console.log(pos);
       console.log(player1moves);
@@ -41,7 +42,7 @@ var y = $scope.y;
     }
     else {
       player2moves.push(pos);
-      $scope.board[pos] = "p2";
+      pos.status = 'p2';
       console.log('Player 2');
       console.log(pos);
       console.log(player2moves);
