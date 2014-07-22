@@ -15,10 +15,10 @@
 
       <div class="column" ng-repeat="row in board">
 
-        <div class="box" ng-click="cluster([$parent.$index,$index], currentPlayer);" ng-repeat="box in row" 
+        <div class="{{ box.x }}_{{ box.y}}_{{box.mark}}" ng-click="cluster([$parent.$index,$index], currentPlayer);" ng-repeat="box in row" 
 
 
-        ng-class="{p1Class: $scope.board[$parent.$index[$index]] == 'p1', classForP2: $scope.board[$parent.$index[$index]] == 'p2'}" >
+        ng-class="{p1Class: $scope.board[$parent.$index[$index]] == 'p1', P2Class: $scope.board[$parent.$index[$index]] == 'p2'}" >
 
           <div class="mark"> {{box.x}}, {{box.y}}</div>
 
