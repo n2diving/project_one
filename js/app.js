@@ -2,29 +2,29 @@ var gameApp = angular.module('TicTacToe', []);
 
 gameApp.controller('gameController', function ($scope) {
 
-$scope.sizeBox = 3;
-$scope.player1Turn = true;
-// var x = $scope.x;
-// var y = $scope.y;
+    $scope.sizeBox = 3;
+    $scope.player1Turn = true;
+    // var x = $scope.x;
+    // var y = $scope.y;
 
   $scope.newBoard = function(size) {
     $scope.board = [];
-      
-      for (i=0; i<size; ++i ) {
-        var colset = [];
 
-        for (j=0; j<size; ++j ) {
-          colset.push({
-            // x:(j + 1),
-            // y:(i + 1),
-            // active:true
-            status: 'active'
-          });
-        }
+    for (i=0; i<size; ++i ) {
+      var colset = [];
+
+      for (j=0; j<size; ++j ) {
+        colset.push({
+          // x:(j + 1),
+          // y:(i + 1),
+          // active:true
+          status: 'active'
+  });
+      }
       $scope.board.push(colset);
-      } 
+    } 
   };
-  
+
   $scope.pc = 0;
   var player1moves = [];
   var player2moves = [];
@@ -57,41 +57,21 @@ $scope.player1Turn = true;
 
     }
     $scope.player1Turn = !$scope.player1Turn;
-  }
-
-  // console.log(player1moves)
- 
-
-  // $scope.clicked = function (x,y,mark){
-  //   alert(x + ", " + y);
-   
-  //   if(clicked) {
-  //     $scope.playerMove = function(counter) {
-  //     counter = 1
-  //       if((counter % 2) === 0) {
-  //         playerMove = "Player1";
-  //       }
-  //       else {
-  //         playerMove = "Player2";
-  //       };
-  //     counter++;
-  //     console.log('counter');
-  //   }
-  //  };
+  };
   
-  
-  // }
+
+  // $scope.win = function() {
+
+
+  //   for(i=0, i < array.length-1, i++) {
+  //     array[i].status == 'p1'
+  //   };
+
+  // };
+
 
 
   $scope.newBoard($scope.sizeBox);
 
-//   $scope.collection = ["Item 1", "Item 2"];
 
-//   $scope.selectedIndex = 0; // Whatever the default selected index is, use -1 for no selection
-
-//   $scope.itemClicked = function ($index) {
-//     $scope.selectedIndex = $index;
-//   };
-// }
-  
 });
