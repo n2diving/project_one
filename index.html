@@ -13,33 +13,17 @@
   <div ng-controller="gameController">
     <div class="main-container">
 
-      <div class="column" ng-repeat="row in board">
+      <div class="column" ng-repeat="row in board  track by $id($index)">
 
-        <div class="{{ box.x }}_{{ box.y}}_{{box.mark}}" ng-click="cluster(box, currentPlayer);" ng-repeat="box in row" 
+        <div ng-click="cluster(box, currentPlayer);" ng-repeat="box in row  track by $id($index)" >
 
-
-        ng-class="{active: box.status == 'active', p1Class: box.status == 'p1', p2Class: box.status == 'p2'}" >
-
-          <div class="mark">{{box.status}}</div>
+          <div class="box" ng-class="{active: box.status == 'active', p1Class: box.status == 'p1', p2Class: box.status == 'p2'}">{{box.status}} index is {{$index}}  parent is {{parent.$index}}</div>
 
 
         </div>
       </div> 
     </div>
 
-
-
-    <!-- <div>
-      <span id="square1">1</span>
-      <span id="square2">2</span>
-      <span id="square3">3</span>
-      <span id="square21">4</span>
-      <span id="square22">5</span>
-      <span id="square23">6</span>
-      <span id="square31">7</span>
-      <span id="square32">8</span>
-      <span id="square33">9</span>
-    </div> -->
   </div>
 </body>
 </html>

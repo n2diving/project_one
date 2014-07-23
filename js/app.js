@@ -3,7 +3,7 @@ var gameApp = angular.module('TicTacToe', []);
 gameApp.controller('gameController', function ($scope) {
 
 $scope.sizeBox = 3;
-// $scope.player1Turn = true;
+$scope.player1Turn = true;
 // var x = $scope.x;
 // var y = $scope.y;
 
@@ -31,22 +31,29 @@ $scope.sizeBox = 3;
 
 
   $scope.cluster = function(pos,player) {
+    var x = 0;
+    var y = 0;
     if($scope.player1Turn) {
-      player1moves.push(pos);
+      player1moves[x] = pos;
       pos.status = 'p1';
       console.log('Player 1');
-      console.log(pos);
+      // console.log(pos);
       console.log(player1moves);
-      console.log($scope.board);
-      console.log(player1moves[0][0]);
+      console.log('this is the pos keys' + pos.keys);
+      console.log('this is the scope index' + $scope.index);
+      // console.log($scope.board);
+      // console.log(player1moves[0][0]);
+      x++
     }
     else {
       player2moves.push(pos);
       pos.status = 'p2';
       console.log('Player 2');
-      console.log(pos);
-      console.log(player2moves);
-      console.log($scope.board);
+      // console.log(pos);
+      console.log('this is the moves ' + player2moves);
+      console.log('this is the pos keys ' + pos.keys);
+      console.log('this is the scope index ' + $scope.index);
+      // console.log($scope.board);
 
     }
     $scope.player1Turn = !$scope.player1Turn;
