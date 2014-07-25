@@ -15,11 +15,11 @@
   <div ng-controller="gameController" ng-model="board">
     <div class="main-container">
 
-      <div class="column" ng-repeat="row in board">
+      <div class="column" ng-repeat="box in board">
 
-        <div ng-click="cluster(box, currentPlayer);" ng-repeat="box in row" >
+        <div ng-click="cluster(box, currentPlayer);" class="box" ng-class="{active: box.status == 'active', p1Class: box.status == 'p1', p2Class: box.status == 'p2'}"><!--ng-repeat="box in row"-->
 
-          <div class="box" ng-class="{active: box.status == 'active', p1Class: box.status == 'p1', p2Class: box.status == 'p2'}">{{box.status}} index is {{$index}} {{box[$index]}}</div>
+          <div >{{board.status}} {{box.win}}</div>
 
 
         </div>
