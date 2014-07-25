@@ -17,7 +17,7 @@
 
       <div class="column" ng-repeat="box in board">
 
-        <div ng-click="cluster(box, currentPlayer);" class="box" ng-class="{active: box.status == 'active', p1Class: box.status == 'p1', p2Class: box.status == 'p2'}"><!--ng-repeat="box in row"-->
+        <div ng-click="cluster(cell, currentPlayer)" ng-repeat="cell in box" class="box" ng-class="{p1Class: classSet(player1moves, cell), p2Class: classSet(player2moves, cell)}">
 
           <div >{{board.status}} {{box.win}}</div>
 
