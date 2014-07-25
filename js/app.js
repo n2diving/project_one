@@ -21,53 +21,74 @@ gameApp.controller('gameController', function ($scope, $firebase) {
   $scope.sizeBox = 3;
   $scope.player1Turn = true;
 
-$scope.board = [[1,2,4],[8,16,32],[64,128,256]];
-
-//   $scope.newBoard = function(size) {
-//     $scope.board = [
-//       {win: 1, status: 'active'},
-//       {win: 2, status: 'active'},
-//       {win: 4, status: 'active'},
-//       {win: 8, status: 'active'},
-//       {win: 16, status: 'active'},
-//       {win: 32, status: 'active'},
-//       {win: 64, status: 'active'},
-//       {win: 128, status: 'active'},
-//       {win: 256, status: 'active'},
-//     ];
-// };
+  $scope.newBoard = function(size) {
+    $scope.board = [
+      {win: 1, status: 'active'},
+      {win: 2, status: 'active'},
+      {win: 4, status: 'active'},
+      {win: 8, status: 'active'},
+      {win: 16, status: 'active'},
+      {win: 32, status: 'active'},
+      {win: 64, status: 'active'},
+      {win: 128, status: 'active'},
+      {win: 256, status: 'active'},
+    ];
+};
 
   $scope.player1moves = 0;
   $scope.player2moves = 0;
-  $scope.box_status = 'active';
+  $scope.boardCheck = [];
+  // $scope.boxstatus = 'active';
   // $scope.thisIsTheOne = function(box) {
   //   $scope.player1moves += box;
   //   console.log($scope.player1moves);
   // }
 
-  $scope.classSet = function(whatever, cell) {
-    return (whatever & cell) == cell;
-  }
+  // $scope.classSet = function(whatever, cell) {
+  //   return (whatever & cell) == cell;
+  // }
   
 
   $scope.cluster = function(cell,player) {
-    if($scope.player1Turn) {
-      $scope.player1moves = $scope.player1moves + cell;
-      $scope.box_status = 'p1';
-      console.log('Player 1');
-      console.log($scope.player1moves);
-      $scope.win(cell);
+    if($scope.board[cell].status == 'active') {
+      if($scope.player1Turn) {
+        $scope.player1moves = $scope.player1moves + $scope.board[cell].win;
+        $scope.board[cell].status = 'p1';
+        console.log('Player 1');
+        console.log("this is the player1 moves " + $scope.player1moves);
+        $scope.win(cell);
+      }
+      else {
+        $scope.player2moves = $scope.player2moves + $scope.board[cell].win;
+        $scope.board[cell].status = 'p2';
+        console.log('Player 2');
+        console.log("this is the player2 moves " + $scope.player2moves);
+        $scope.win(cell);
+
+      }
+      $scope.player1Turn = !$scope.player1Turn;
     }
     else {
-      $scope.player2moves = $scope.player2moves + cell;
-      $scope.box_status = 'p2';
-      console.log('Player 2');
-      console.log($scope.player2moves);
-      $scope.win(cell);
-
+      alert('not available');
     }
-    $scope.player1Turn = !$scope.player1Turn;
+    $scope.tie();
+
   };
+
+
+  $scope.tie = function() {
+    var count = 0;
+    for(var i = 0; i < $scope.board.length; i++) {
+      if($scope.board[i].status != 'active') {
+        count += 1;
+      }
+    }
+    if(count == 9) {
+      alert('looks like you guys tied');
+      $scope.reset();
+    }
+  };
+
 
 
     $scope.bWin = [  
@@ -81,12 +102,12 @@ $scope.board = [[1,2,4],[8,16,32],[64,128,256]];
       {check: 84, d: 'you win up diagonally!'},
       ];
 
-  $scope.win = function(box) {
+  $scope.win = function() {
       for(var bwIndex in $scope.bWin){
          var bw = $scope.bWin[bwIndex];
          if (($scope.player1moves & bw.check) == bw.check) {
            alert("Player 1, " + bw.d);
-           $scope.p1winCounter++
+           $scope.p1winCounter += 1;
            console.log("p1 win count: " + $scope.p1winCounter);
            $scope.reset();
          }
@@ -96,12 +117,12 @@ $scope.board = [[1,2,4],[8,16,32],[64,128,256]];
          var bw = $scope.bWin[bwIndex];
          if (($scope.player2moves & bw.check) == bw.check) {
            alert("Player 2, " + bw.d);
-           $scope.p2winCounter++
+           $scope.p2winCounter += 1;
            console.log("p2 win count: " + $scope.p2winCounter);
            $scope.reset();
          }
         };
-        
+
   };
 
   $scope.p1winCounter = 0;
@@ -110,9 +131,10 @@ $scope.board = [[1,2,4],[8,16,32],[64,128,256]];
   $scope.reset = function() {
     $scope.player1moves = 0;
     $scope.player2moves = 0;
-  }
+    $scope.newBoard($scope.sizeBox);
+  };
 
-  // $scope.newBoard($scope.sizeBox);
+  $scope.newBoard($scope.sizeBox);
 
 
 });

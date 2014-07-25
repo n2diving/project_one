@@ -76,3 +76,22 @@ body {
 .p2Class {
   background-color: #0D5A12;
 }
+
+
+h5.reflect_1 {
+    color: #666;
+    border-bottom: 6px solid #444;
+    line-height: 0.2em;
+    margin: 0px;
+    padding: 0px 0px 0px 10px;
+    font-size: 24px;
+}
+
+h5.reflect_2 {
+    color: #AAA;
+    margin: 0px;
+    line-height: 0.6em;
+    border-top: 1px solid #EEE;
+    padding: 0px 0px 0px 10px;
+    font-size: 24px;
+}
