@@ -2,21 +2,13 @@ var gameApp = angular.module('gameApp', ['firebase']);
 
 gameApp.controller('gameController', function ($scope, $firebase) {
 
-  // var gameRef = new Firebase("https://glaring-fire-4974.firebaseIO.com");
-
-  // $scope.player1Turn = $firebase(new Firebase('https://glaring-fire-4974.firebaseIO.com' + '/player1Turn'));
-  // $scope.remoteBoardContainer = $firebase(new Firebase('https://glaring-fire-4974.firebaseIO.com' + '/remoteBoardContainer'));
-  // // $scope.remoteBoardContainer.$bind($scope, 'boardContainer: boardArray');
-  // $scope.$watch('board', function() {
-  //   console.log('The times they are a changing!');
-  // }) ;
-
-  // $scope.boardContainer = {
-  //   boardArray: $scope.board,
-  //   playerTurn: $scope.player1Turn,
-  //   p1Moves: $scope.player1moves,
-  //   p2Moves: $scope.player2moves
-  // }
+//the firebase object needed to sync up
+  $scope.boardContainer = {
+    boardArray: $scope.board,
+    playerTurn: $scope.player1Turn,
+    p1Moves: $scope.player1moves,
+    p2Moves: $scope.player2moves
+  };
 
   $scope.sizeBox = 3;
   $scope.player1Turn = true;
@@ -34,6 +26,8 @@ gameApp.controller('gameController', function ($scope, $firebase) {
       {win: 256, status: 'active'},
     ];
 };
+
+
 
   $scope.player1moves = 0;
   $scope.player2moves = 0;
@@ -135,6 +129,17 @@ gameApp.controller('gameController', function ($scope, $firebase) {
   };
 
   $scope.newBoard($scope.sizeBox);
+
+
+  var gameRef = new Firebase("https://glaring-fire-4974.firebaseIO.com");
+  $scope.player1Turn = $firebase(new Firebase('https://glaring-fire-4974.firebaseIO.com/player1Turn'));
+  $scope.remoteBoardContainer = $firebase(new Firebase('https://glaring-fire-4974.firebaseIO.com/remoteBoardContainer'));
+
+
+  $scope.remoteBoardContainer.$bind($scope, 'boardContainer');
+  // $scope.$watch('boardContainer', function() {
+  //   console.log('The times they are a changing!');
+  // }) ;
 
 
 });
