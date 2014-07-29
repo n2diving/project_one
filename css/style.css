@@ -55,7 +55,7 @@ body {
   height: 100px;*/
 }
 
-.box:hover {
+.active:hover {
   background-color: #0d2f5a;
   color: #FFF;
 }
@@ -68,6 +68,13 @@ body {
   height:200px;
 }
 */
+.customP1 {
+   cursor:url(../images/M.jpg), auto;
+}
+
+.customP2 {
+   cursor:url(../images/N.jpg), auto;
+}
 
 .p1Class {
   background-color: #5A0D54;
@@ -77,6 +84,9 @@ body {
   background-color: #0D5A12;
 }
 
+.no-hover:hover {
+  background-color: inherit;
+}
 
 h5.reflect_1 {
     color: #666;
@@ -94,4 +104,10 @@ h5.reflect_2 {
     border-top: 1px solid #EEE;
     padding: 0px 0px 0px 10px;
     font-size: 24px;
+}
+
+#canvas {
+  position:absolute;
+  top:0px;
+  z-index: -1;
 }
